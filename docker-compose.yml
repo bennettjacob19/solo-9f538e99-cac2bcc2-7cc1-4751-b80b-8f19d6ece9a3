@@ -1,0 +1,15 @@
+services:
+  rpki-drill:
+    build: .
+    image: rpki-drill:latest
+    container_name: rpki-drill
+    ports:
+      - "8000:8000"
+    volumes:
+      - rpki_data:/data
+    environment:
+      RPKI_DRILL_DB: /data/drill.db
+    restart: unless-stopped
+
+volumes:
+  rpki_data:
